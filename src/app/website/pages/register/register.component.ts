@@ -1,0 +1,27 @@
+import { Component } from '@angular/core';
+import { OnExit } from 'src/app/models/index.models';
+import Swal from 'sweetalert2';
+
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
+})
+export class RegisterComponent implements OnExit{
+
+  onExit() {
+    const confirm = Swal.fire({
+      title: 'Are you sure?',
+      showDenyButton: true,
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        return true;
+      }
+      return false
+    });
+    return confirm
+  }
+  
+
+}
